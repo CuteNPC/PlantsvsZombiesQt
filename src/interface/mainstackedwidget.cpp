@@ -27,6 +27,8 @@ MainStackedWidget::MainStackedWidget(QWidget *parent) : QStackedWidget(parent)
     setCurrentIndex(mainIndex);
 }
 
+MainStackedWidget::~MainStackedWidget() {};
+
 // 游戏开始
 void MainStackedWidget::gameStart(int level)
 {
@@ -37,23 +39,22 @@ void MainStackedWidget::gameStart(int level)
 }
 
 // 游戏结束 x为2是手动退出 1是胜利 0是失败
-void MainStackedWidget::gameEnd(enum GameOverStatus status)
+void MainStackedWidget::gameEnd(enum GameStatus status)
 {
     removeWidget(game);
     switch (status)
     {
-    case GameOverStatus::WIN:
+    case GameStatus::WIN:
         endMenu->setWinBkg();
         setCurrentIndex(endIndex);
         break;
-    case GameOverStatus::LOSE:
+    case GameStatus::LOSE:
         endMenu->setLoseBkg();
         setCurrentIndex(endIndex);
         break;
-    case GameOverStatus::MANUAL_EXIT:
+    case GameStatus::MANUAL_EXIT:
         setCurrentIndex(0);
         break;
-    case GameOverStatus::ERROR:
     default:
         exit(-1);
         break;

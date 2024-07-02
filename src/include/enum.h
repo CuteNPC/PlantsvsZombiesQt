@@ -1,12 +1,14 @@
 #ifndef ENUM_H
 #define ENUM_H
 
-enum GameOverStatus
+enum GameStatus
 {
-    ERROR,
+    WAITING,
+    RUNNING,
     WIN,
     LOSE,
     MANUAL_EXIT,
+    ERROR,
 };
 
 enum StackWidgetIndex

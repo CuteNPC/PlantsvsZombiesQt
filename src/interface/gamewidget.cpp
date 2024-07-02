@@ -1,6 +1,9 @@
 #include "interface/gamewidget.h"
+#include "core/playthread.h"
 #include "include/constval.h"
 #include "include/size.h"
+#include "interface/backbutton.h"
+#include "interface/mainstackedwidget.h"
 #include "plant/coldpeashooter.h"
 #include "plant/nut.h"
 #include "plant/peashooter.h"
@@ -11,19 +14,15 @@
 #include "util/cardlist.h"
 #include "util/piconhand.h"
 #include "util/shovel.h"
+#include <QEvent>
 #include <QMouseEvent>
+#include <QPainter>
 #include <QPixmap>
 #include <QTimer>
-#include <backbutton.h>
-#include <mainstackedwidget.h>
-#include <playthread.h>
-#include <qevent.h>
-#include <qpainter.h>
 
 GameWidget::GameWidget(QWidget *parent, int stage_)
-    : QWidget(parent), zom_mutex(new QMutex()), zomthread(new Zombiethread(this, stage_)),
-      sun_mutex(new QMutex()) /*, refresh_timer(new QTimer())*/
-      ,
+    : QWidget(parent), zom_mutex(new QMutex()), zomthread(new Zombiethread(this)),
+      sun_mutex(new QMutex()), /*, refresh_timer(new QTimer())*/
       Suntimer(new QTimer()), mainthread(new Mainthread(this))
 {
     // 把返回按钮与结束游戏的功能连接起来
@@ -45,7 +44,7 @@ GameWidget::GameWidget(QWidget *parent, int stage_)
     }
     // 设置样式
     setObjectName("gamewidget");
-    setStyleSheet("#gamewidget{border-image:url(:/images/background.png)}");
+    setStyleSheet("#gamewidget{border-image:url(:/resources/images/background.png)}");
     setFixedSize(MAX_X, MAX_Y);
     // 运行阳光计时器，playthread
     Suntimer->setInterval(15000);
@@ -226,7 +225,7 @@ void GameWidget::newSun() // 新生成阳光
 
 // void GameWidget::refresh()
 //{
-//     //setStyleSheet("#playwindow{border-image:url(../framework/images/background.png)}");
+//     //setStyleSheet("#playwindow{border-image:url(:/resources/images/background.png)}");
 // }
 
 // void GameWidget::exit()
@@ -269,8 +268,8 @@ void GameWidget::createPlant(int x_, int y_, int id_) // 根据id创造植物
 void GameWidget::paintEvent(QPaintEvent *) // 刷新屏幕，避免出现白线
 {
     QPainter painter(this);
-    painter.drawPixmap(rect(), QPixmap(":/images/background.png"), QRect());
-    setStyleSheet("#playwindow{border-image:url(../framework/images/background.png)}");
+    painter.drawPixmap(rect(), QPixmap(":/resources/images/background.png"), QRect());
+    setStyleSheet("#playwindow{border-image:url(:/resources/images/background.png)}");
 }
 
 bool GameWidget::hasZombie(int x) // 判断一行有没有僵尸

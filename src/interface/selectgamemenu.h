@@ -16,6 +16,7 @@ class SelectGameMenu : public QWidget
 
   public:
     explicit SelectGameMenu(MainStackedWidget *parent = nullptr);
+    ~SelectGameMenu() noexcept;
     void paintEvent(QPaintEvent *);
   signals:
 };

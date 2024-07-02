@@ -13,7 +13,8 @@ class MainWidget : public QWidget
     MainStackedWidget *mainStackedWidget;
 
   public:
-    MainWidget(QWidget *parent = nullptr);
+    MainWidget();
+    ~MainWidget() noexcept;
 };
 
 #endif // MAINWIDGET_H

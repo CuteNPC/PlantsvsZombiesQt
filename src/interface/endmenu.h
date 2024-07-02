@@ -1,6 +1,7 @@
 #ifndef ENDMENU_H
 #define ENDMENU_H
 
+#include "include/enum.h"
 #include <QPushButton>
 #include <QStackedWidget>
 #include <QWidget>
@@ -14,8 +15,10 @@ class EndMenu : public QWidget
 
   public:
     explicit EndMenu(QStackedWidget *parent = nullptr); // 结束菜单
+    ~EndMenu() noexcept; // 结束菜单
     void paintEvent(QPaintEvent *);                     // 绘制背景
-    void setBkg(int x);                                 // 设置背景
+    void setWinBkg();                                 // 设置背景
+    void setLoseBkg();                                 // 设置背景
   signals:
 };
 

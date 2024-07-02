@@ -27,8 +27,9 @@ class MainStackedWidget : public QStackedWidget
 
   public:
     MainStackedWidget(QWidget *parent_ = nullptr);
+    ~MainStackedWidget() noexcept;
     void gameStart(int level);                // 游戏开始
-    void gameEnd(enum GameOverStatus status); // 游戏结束 x为-1是手动退出 1是胜利 0是失败
+    void gameEnd(enum GameStatus status); // 游戏结束 x为-1是手动退出 1是胜利 0是失败
 };
 
 #endif // MAINSTACKEDWIDGET_H

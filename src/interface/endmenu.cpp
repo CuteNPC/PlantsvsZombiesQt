@@ -1,8 +1,8 @@
 #include "interface/endmenu.h"
+#include "include/constval.h"
+#include "include/size.h"
 #include <QPainter>
 #include <QWidget>
-#include <constval.h>
-#include <size.h>
 
 // 结束画面
 EndMenu::EndMenu(QStackedWidget *parent) : QWidget(parent)
@@ -18,7 +18,11 @@ EndMenu::EndMenu(QStackedWidget *parent) : QWidget(parent)
             [=] { parent->setCurrentIndex(0); }); // 按下按钮，跳转到stack的第1页
 }
 
-void EndMenu::setBkg(int x_) { x = x_; }
+EndMenu::~EndMenu(){};
+
+void EndMenu::setWinBkg() { x = 1; }
+
+void EndMenu::setLoseBkg() { x = 0; }
 
 void EndMenu::paintEvent(QPaintEvent *)
 {

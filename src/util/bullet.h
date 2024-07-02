@@ -18,6 +18,7 @@ class Bullet : public QLabel
     QPropertyAnimation *ani;
     QTimer *timer;
     Bullet(int x, int y, QWidget *ptr, int a = 1, bool b = 0);
+    ~Bullet() noexcept;
 
   public slots:
     void deleteLater();

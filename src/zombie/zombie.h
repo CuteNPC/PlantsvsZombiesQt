@@ -17,6 +17,7 @@ class once_movie : public QMovie
     Q_OBJECT
   public:
     once_movie(QString s);
+    ~once_movie() noexcept;
 
   signals:
     void once_finished();
@@ -45,6 +46,7 @@ class Zombie : public QLabel
 
     Zombie(int loc, double fs, double a, double sp, float es, int st, QString *movie_names,
            QString *eat_movie_names, GameWidget *ptr);
+    ~Zombie() noexcept;
     virtual void run();
 
   public slots:

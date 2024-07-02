@@ -9,7 +9,7 @@ MainMenu::MainMenu(QStackedWidget *parent) : QWidget{parent}
 {
     // 设置大小
     setObjectName("mainmenu");
-    setStyleSheet("#mainmenu{border-image:url(:/images/bkg1.png)}");
+    setStyleSheet("#mainmenu{border-image:url(:/resources/images/bkg1.png)}");
 
     setFixedSize(MAX_X, MAX_Y);
     // 五个按钮
@@ -26,6 +26,8 @@ MainMenu::MainMenu(QStackedWidget *parent) : QWidget{parent}
             &QWidget::close); // 按下按钮，关闭mainmenu；从而关闭整个程序
 }
 
+MainMenu::~MainMenu() {};
+
 void MainMenu::paintEvent(QPaintEvent *)
 {
     // 创建画家，指定绘图设备
@@ -33,7 +35,7 @@ void MainMenu::paintEvent(QPaintEvent *)
     // 创建QPixmap对象
     QPixmap pix;
     // 加载图片
-    pix.load(":/images/bkg1.png");
+    pix.load(":/resources/images/bkg1.png");
     // 绘制背景图
     painter.drawPixmap(0, 0, 1100, 600, pix);
 }

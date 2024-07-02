@@ -22,6 +22,7 @@ class Plant : public QLabel
 
   public:
     Plant(QWidget *parent, int y, int x, int id); // 根据xy坐标和id初始化
+    ~Plant() noexcept;
     bool is_dead();                               // 检测是不是死了
     void die();                                   // 去死吧
     void hurt();                                  // 受伤

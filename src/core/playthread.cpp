@@ -2,8 +2,8 @@
 #include "interface/gamewidget.h"
 #include "interface/mainstackedwidget.h"
 #include "plant/plant.h"
+#include "qrandom.h"
 #include <QFile>
-#include <qrandom.h>
 
 Mainthread::Mainthread(GameWidget *ptr) : parent(ptr) // 主要线程构造
 {
@@ -15,7 +15,7 @@ Zombiethread::Zombiethread(GameWidget *ptr) : parent(ptr)
     connect(this, SIGNAL(timeout()), this, SLOT(prepare_for_next()));
     zombieid << 0; // 从资源文件读入僵尸生成时序表
     showtime << 0;
-    QFile file(":/zombielist.txt");
+    QFile file(":/resources/info/zombielist.txt");
     file.open(QIODevice::ReadOnly);
     char *str = new char[100];
     for (int i = 0;; i++)
@@ -46,7 +46,7 @@ void Zombiethread::prepare_for_next()
 
 void Mainthread::run()
 { // 主要线程的执行
-    while (parent->result == -1)
+    while (parent->result == GameStatus::RUNNING)
     { // 游戏尚未结束时进入循环
         msleep(10);
 
@@ -65,7 +65,7 @@ void Mainthread::run()
                     continue;
                 }
                 if (parent->zombies[j][i]->x() == 0) // 有僵尸已经到达目的地，游戏失败
-                    parent->result = 0;
+                    parent->result = GameStatus::LOSE;
                 parent->zombies[j][i]->run();
                 i++;
             }
@@ -74,7 +74,7 @@ void Mainthread::run()
 
         if (!flag && parent->zomthread->showtime.count() ==
                          1) // 所有僵尸生成完毕，且当前场上没有僵尸，游戏胜利
-            parent->result = 1;
+            parent->result = GameStatus::WIN;
 
         for (int j = 0; j < 5; j++) // 遍历所有豌豆子弹，已经飞出场外的或击中僵尸的移除队列
         {
@@ -100,4 +100,5 @@ void Mainthread::run()
                     parent->plants[j][i] = nullptr;
                 }
     }
+    printf("mainthread END\n");
 }

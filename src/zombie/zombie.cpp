@@ -16,6 +16,7 @@ void once_movie::check_if_finished(int frameNumber)
     if (frameNumber == frameCount() - 1)
         emit once_finished();
 }
+once_movie::~once_movie() {}
 
 Zombie::Zombie(int loc, double fs, double a, double sp, float es, int st, QString *movie_names,
                QString *eat_movie_names, GameWidget *ptr)
@@ -63,6 +64,8 @@ Zombie::Zombie(int loc, double fs, double a, double sp, float es, int st, QStrin
     ani->start();
 }
 
+Zombie::~Zombie() {}
+
 void Zombie::change_to_formal_state()
 { // 该函数使僵尸进入下一阶段
     if (state_now < state_number)
@@ -79,8 +82,8 @@ void Zombie::change_to_formal_state()
             ani->stop();
         eating->stop();
         debuff->stop();
-        once_movie *die_mov = new once_movie(":/images/zdie.gif"); // 设置倒下的动画
-        once_movie *head_mov = new once_movie(":/images/zhead.gif");
+        once_movie *die_mov = new once_movie(":/resources/images/zdie.gif"); // 设置倒下的动画
+        once_movie *head_mov = new once_movie(":/resources/images/zhead.gif");
         setMovie(die_mov);
         connect(die_mov, SIGNAL(finished()), die_mov, SLOT(deleteLater()));
         connect(die_mov, SIGNAL(finished()), this, SLOT(is_to_die()));

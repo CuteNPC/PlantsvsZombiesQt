@@ -5,7 +5,7 @@
 #include <QStackedWidget>
 #include <QWidget>
 
-MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
+MainWidget::MainWidget()
 {
     // 设置主窗口大小，标题
     setFixedSize(MAX_X, MAX_Y);
@@ -14,3 +14,5 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
     // 初始化StackedWidget
     mainStackedWidget = new MainStackedWidget(this);
 }
+
+MainWidget::~MainWidget() {}

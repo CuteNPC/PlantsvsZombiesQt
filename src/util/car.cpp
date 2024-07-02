@@ -1,9 +1,9 @@
 #include "util/car.h"
+#include "include/constval.cpp"
 #include "interface/gamewidget.h"
 #include <QImage>
 #include <QPixmap>
 #include <QRect>
-#include <constval.h>
 
 Car::Car(GameWidget *ptr, int y)
     : // 构造小推车
@@ -27,6 +27,8 @@ Car::Car(GameWidget *ptr, int y)
     show();
     setAttribute(Qt::WA_TransparentForMouseEvents, true);
 }
+
+Car::~Car() {};
 
 void Car::try_to_kill() // timeout时发出kill信号，指示自身所在位置
 {

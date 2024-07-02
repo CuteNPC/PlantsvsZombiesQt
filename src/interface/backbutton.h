@@ -4,8 +4,6 @@
 #include "include/size.h"
 #include <QLabel>
 
-#include <QLabel>
-
 class GameWidget;
 
 // 返回按钮
@@ -18,6 +16,7 @@ class BackButton : public QLabel
 
   public:
     BackButton(GameWidget *parent_);
+    ~BackButton() noexcept;
     void mousePressEvent(QMouseEvent *ev); // 捕获鼠标点击按钮事件
     void enterEvent(QEnterEvent *event);   // 捕获鼠标进入按钮区域事件
     void leaveEvent(QEvent *event);        // 捕获鼠标离开按钮区域事件

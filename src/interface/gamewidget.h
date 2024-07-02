@@ -2,6 +2,7 @@
 #define GAMEWIDGET_H
 
 #include "core/playthread.h"
+#include "include/enum.h"
 #include "include/size.h"
 #include "plant/plant.h"
 #include "util/bullet.h"
@@ -54,19 +55,19 @@ class GameWidget : public QWidget
     BackButton *backButton; // 返回按钮
 
   public:
-    int result = -1;                          // 游戏结局
-    Plant *plants[ROW][COLUMN] = {{nullptr}}; // 植物指针数组，管理植物
-    QVector<Bullet *> bullets[ROW];           // 管理子弹
-    QVector<Zombie *> zombies[ROW];           // 管理僵尸
-    QVector<Sun *> suns;                      // 管理阳光
-    Car *cars[ROW];                           // 管理小车
+    enum GameStatus result = GameStatus::RUNNING; // 游戏结局
+    Plant *plants[ROW][COLUMN] = {{nullptr}};     // 植物指针数组，管理植物
+    QVector<Bullet *> bullets[ROW];               // 管理子弹
+    QVector<Zombie *> zombies[ROW];               // 管理僵尸
+    QVector<Sun *> suns;                          // 管理阳光
+    Car *cars[ROW];                               // 管理小车
 
     Mainthread *mainthread; // 用来不断刷新的线程
     Zombiethread *zomthread;
 
   public:
     explicit GameWidget(QWidget *parent = nullptr, int stage_ = 1);
-    ~GameWidget();
+    ~GameWidget() noexcept;
     void mousePressEvent(QMouseEvent *ev);
     bool emptyHand();
     bool hasZombie(int x);

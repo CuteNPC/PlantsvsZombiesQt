@@ -22,6 +22,8 @@ Plant::Plant(QWidget *parent_, int y_, int x_, int id_) : QLabel(parent_)
     setAttribute(Qt::WA_TransparentForMouseEvents, true); // 不要让植物挡到鼠标
 }
 
+Plant::~Plant() {};
+
 void Plant::hurt()
 {
     HP--;

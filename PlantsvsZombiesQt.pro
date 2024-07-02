@@ -8,9 +8,10 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 # DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+INCLUDEPATH += src
+
 SOURCES += \
     src/core/playthread.cpp \
-    src/core/playwindow.cpp \
     src/include/constval.cpp \
     src/include/globalvar.cpp \
     src/interface/backbutton.cpp \
@@ -39,7 +40,6 @@ SOURCES += \
 
 HEADERS += \
     src/core/playthread.h \
-    src/core/playwindow.h \
     src/include/constval.h \
     src/include/enum.h \
     src/include/globalvar.h \

@@ -14,6 +14,7 @@ class Car : public QLabel
     QTimer *timer;
     bool is_active = 0; // 是否已经被激活
     Car(GameWidget *ptr, int y);
+    ~Car() noexcept;
 
   private slots:
     void deleteLater();

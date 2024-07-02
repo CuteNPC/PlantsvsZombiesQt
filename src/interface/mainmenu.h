@@ -1,7 +1,7 @@
 #ifndef MAINMENU_H
 #define MAINMENU_H
 
-#include "QPainter"
+#include <QPainter>
 #include <QPushButton>
 #include <QStackedWidget>
 #include <QWidget>
@@ -14,6 +14,7 @@ class MainMenu : public QWidget
 
   public:
     explicit MainMenu(QStackedWidget *parent = nullptr);
+    ~MainMenu() noexcept;
     void paintEvent(QPaintEvent *);
   signals:
 };

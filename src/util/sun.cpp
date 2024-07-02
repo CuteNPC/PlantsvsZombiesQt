@@ -17,7 +17,7 @@ Sun::Sun(GameWidget *p, bool is_nature, int x, int y)
     ani2 = new QPropertyAnimation(this, "geometry", p);
 
     // 设置gif动画
-    movie = new QMovie(":/images/sun.gif");
+    movie = new QMovie(":/resources/images/sun.gif");
     setMovie(movie);
     movie->start();
 
