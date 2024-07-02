@@ -15,3 +15,5 @@ CardList::CardList(QWidget *parent, int len_) : QWidget{parent}
 
 // 返回一个卡槽指针，供游戏窗体使用
 Card *CardList::cardptr(int x) { return cardPointer[x]; }
+
+CardList::~CardList() {}

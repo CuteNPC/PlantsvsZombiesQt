@@ -11,6 +11,7 @@ class PlantInHand : public QLabel
 
   public:
     PlantInHand(QWidget *parent, int id0, QString path);
+    ~PlantInHand() noexcept;
 };
 
 #endif // PLANTINHAND_H

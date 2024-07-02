@@ -25,6 +25,7 @@ class Card : public QLabel
 
   public:
     Card(QWidget *parent, int id_);        // 构造函数
+    ~Card() noexcept;        // 构造函数
     void mousePressEvent(QMouseEvent *ev); // 捕获鼠标点击卡牌事件
     void enterEvent(QEnterEvent *event);   // 捕获鼠标进入卡牌区域事件
     void leaveEvent(QEvent *event);        // 捕获鼠标离开卡牌区域事件

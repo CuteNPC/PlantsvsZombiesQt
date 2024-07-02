@@ -85,3 +85,5 @@ void Sun::mouseMoveEvent(QMouseEvent *ev)
 {
     ((GameWidget *)parentWidget())->tryMove(ev->position().x() + x(), ev->position().x() + y());
 }
+
+Sun::~Sun() {}

@@ -16,6 +16,7 @@ class CardList : public QWidget
 
   public:
     explicit CardList(QWidget *parent = nullptr, int len_ = 0); // 构造函数
+    ~CardList() noexcept;                                       // 构造函数
     Card *cardptr(int x);                                       // 返回一个卡槽指针
 
   signals:

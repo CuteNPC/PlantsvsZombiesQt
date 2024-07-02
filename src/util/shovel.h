@@ -15,6 +15,7 @@ class Shovel : public QLabel
 
   public:
     Shovel(GameWidget *parent_);
+    ~Shovel() noexcept;
     void mousePressEvent(QMouseEvent *ev); // 捕获鼠标点击铲子事件
     void enterEvent(QEnterEvent *event);   // 捕获鼠标进入铲子区域事件
     void leaveEvent(QEvent *event);        // 捕获鼠标离开铲子区域事件

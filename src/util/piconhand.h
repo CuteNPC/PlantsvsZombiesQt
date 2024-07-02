@@ -11,6 +11,7 @@ class PicOnHand : public QLabel
 
   public:
     PicOnHand(QWidget *parent, QString path);
+    ~PicOnHand() noexcept;
 };
 
 #endif // PICONHAND_H

@@ -13,3 +13,5 @@ PicOnHand::PicOnHand(QWidget *parent, QString path) : QLabel(parent)
     setAttribute(Qt::WA_TransparentForMouseEvents, true);
     raise();
 }
+
+PicOnHand::~PicOnHand() {}

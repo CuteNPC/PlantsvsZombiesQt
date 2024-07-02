@@ -14,3 +14,5 @@ PlantInHand::PlantInHand(QWidget *parent, int id0_, QString path) : QLabel(paren
     setAttribute(Qt::WA_TransparentForMouseEvents, true);
     raise();
 }
+
+PlantInHand::~PlantInHand() {}

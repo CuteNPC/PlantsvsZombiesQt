@@ -47,3 +47,5 @@ void Shovel::leaveEvent(QEvent *)
     pixmap = QPixmap(shovelImg[0]);
     setPixmap(pixmap);
 }
+
+Shovel::~Shovel() {}

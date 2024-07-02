@@ -28,7 +28,7 @@ Car::Car(GameWidget *ptr, int y)
     setAttribute(Qt::WA_TransparentForMouseEvents, true);
 }
 
-Car::~Car() {};
+Car::~Car(){};
 
 void Car::try_to_kill() // timeout时发出kill信号，指示自身所在位置
 {

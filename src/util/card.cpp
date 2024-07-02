@@ -43,6 +43,8 @@ Card::Card(QWidget *parent, int id_) : QLabel(parent), mask(parent)
             });
 }
 
+Card::~Card() {}
+
 // 鼠标点击事件
 void Card::mousePressEvent(QMouseEvent *ev)
 {

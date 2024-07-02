@@ -20,6 +20,7 @@ class Sun : public QLabel
     QTimer *timer, *renewer; //
     GameWidget *parent;      // 指向gamewidget
     Sun(GameWidget *p, bool is_nature, int x = 0, int y = 0);
+    ~Sun() noexcept;
     // 构造函数 第一个是父对象，第二个是是否是自然生成，第三四个是坐标
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *ev);
