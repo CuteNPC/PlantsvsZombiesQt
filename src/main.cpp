@@ -1,5 +1,5 @@
 #include <QApplication>
-#include"mainwidget.h"
+#include "mainwidget.h"
 
 int main(int argc, char *argv[])
 {
