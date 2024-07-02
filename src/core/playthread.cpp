@@ -1,9 +1,9 @@
-#include "playthread.h"
-#include "gamewidget.h"
-#include "mainstackedwidget.h"
-#include "plant.h"
-#include <qrandom.h>
+#include "core/playthread.h"
+#include "interface/gamewidget.h"
+#include "interface/mainstackedwidget.h"
+#include "plant/plant.h"
 #include <QFile>
+#include <qrandom.h>
 
 Mainthread::Mainthread(GameWidget *ptr) : parent(ptr) // 主要线程构造
 {
@@ -72,7 +72,8 @@ void Mainthread::run()
         }
         parent->zom_mutex->unlock();
 
-        if (!flag && parent->zomthread->showtime.count() == 1) // 所有僵尸生成完毕，且当前场上没有僵尸，游戏胜利
+        if (!flag && parent->zomthread->showtime.count() ==
+                         1) // 所有僵尸生成完毕，且当前场上没有僵尸，游戏胜利
             parent->result = 1;
 
         for (int j = 0; j < 5; j++) // 遍历所有豌豆子弹，已经飞出场外的或击中僵尸的移除队列

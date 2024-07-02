@@ -1,19 +1,18 @@
-#include "mainstackedwidget.h"
+#include "interface/mainstackedwidget.h"
+#include "include/enum.h"
+#include "include/size.h"
+#include "interface/endmenu.h"
+#include "interface/gamewidget.h"
+#include "interface/mainmenu.h"
+#include "interface/selectgamemenu.h"
 #include <QStackedWidget>
-#include "endmenu.h"
-#include "enum.h"
-#include "gamewidget.h"
-#include "mainmenu.h"
-#include "selectgamemenu.h"
-#include "size.h"
 
-MainStackedWidget::MainStackedWidget(QWidget* parent)
-    : QStackedWidget(parent)
+MainStackedWidget::MainStackedWidget(QWidget *parent) : QStackedWidget(parent)
 {
-    //设置大小
+    // 设置大小
     setFixedSize(MAX_X, MAX_Y);
 
-    //创建窗口
+    // 创建窗口
     mainMenu = new MainMenu(this);
     mainIndex = addWidget(mainMenu);
 
@@ -28,7 +27,7 @@ MainStackedWidget::MainStackedWidget(QWidget* parent)
     setCurrentIndex(mainIndex);
 }
 
-//游戏开始
+// 游戏开始
 void MainStackedWidget::gameStart(int level)
 {
     game = new GameWidget(this, level);
@@ -37,11 +36,12 @@ void MainStackedWidget::gameStart(int level)
     setCurrentIndex(gameIndex);
 }
 
-//游戏结束 x为2是手动退出 1是胜利 0是失败
+// 游戏结束 x为2是手动退出 1是胜利 0是失败
 void MainStackedWidget::gameEnd(enum GameOverStatus status)
 {
     removeWidget(game);
-    switch (status) {
+    switch (status)
+    {
     case GameOverStatus::WIN:
         endMenu->setWinBkg();
         setCurrentIndex(endIndex);

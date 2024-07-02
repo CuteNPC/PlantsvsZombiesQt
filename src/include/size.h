@@ -1,7 +1,7 @@
 #ifndef SIZE_H
 #define SIZE_H
 
-//一些游戏界面的尺寸，调整尺寸方便
+// 一些游戏界面的尺寸，调整尺寸方便
 
 #define MAX_X 1100
 #define MAX_Y 600

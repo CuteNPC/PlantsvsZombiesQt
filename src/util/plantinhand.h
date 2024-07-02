@@ -9,9 +9,8 @@ class PlantInHand : public QLabel
     int id;
     QPixmap pixmap;
 
-public:
-    PlantInHand(QWidget *parent,int id0,QString path);
-
+  public:
+    PlantInHand(QWidget *parent, int id0, QString path);
 };
 
 #endif // PLANTINHAND_H

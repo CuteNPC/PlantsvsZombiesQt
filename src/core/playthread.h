@@ -1,9 +1,9 @@
 #ifndef PLAYTHREAD_H
 #define PLAYTHREAD_H
 
-#include "plant.h"
-#include "sun.h"
-#include "zombie.h"
+#include "plant/plant.h"
+#include "util/sun.h"
+#include "zombie/zombie.h"
 #include <QThread>
 #include <QTimer>
 

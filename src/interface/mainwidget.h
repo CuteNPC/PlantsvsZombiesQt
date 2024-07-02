@@ -11,7 +11,8 @@ class MainWidget : public QWidget
 {
     Q_OBJECT
     MainStackedWidget *mainStackedWidget;
-public:
+
+  public:
     MainWidget(QWidget *parent = nullptr);
 };
 

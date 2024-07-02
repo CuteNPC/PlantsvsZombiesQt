@@ -1,20 +1,20 @@
 #ifndef GAMEWIDGET_H
 #define GAMEWIDGET_H
 
-#include <QWidget>
+#include "core/playthread.h"
+#include "include/size.h"
+#include "plant/plant.h"
+#include "util/bullet.h"
+#include "util/car.h"
+#include "util/sun.h"
+#include "zombie/zombie.h"
 #include <QLabel>
-#include "playthread.h"
-#include "zombie.h"
-#include "plant.h"
-#include "bullet.h"
-#include "sun.h"
-#include "car.h"
-#include <QVector>
-#include <QQueue>
 #include <QMainWindow>
 #include <QMutex>
+#include <QQueue>
 #include <QTimer>
-#include "size.h"
+#include <QVector>
+#include <QWidget>
 
 class Bullet;
 class Sun;
@@ -35,12 +35,12 @@ class GameWidget : public QWidget
 
     friend MainStackedWidget;
 
-public:
+  public:
     QMutex *bul_mutex[ROW];
     QMutex *zom_mutex;
     QMutex *sun_mutex;
 
-private:
+  private:
     int stage;              // 第几关
     CardList *cradlist;     // 卡片列
     int plantInHand;        // 手上的卡片
@@ -53,7 +53,7 @@ private:
     int sunshine;           // 阳光数量
     BackButton *backButton; // 返回按钮
 
-public:
+  public:
     int result = -1;                          // 游戏结局
     Plant *plants[ROW][COLUMN] = {{nullptr}}; // 植物指针数组，管理植物
     QVector<Bullet *> bullets[ROW];           // 管理子弹
@@ -64,7 +64,7 @@ public:
     Mainthread *mainthread; // 用来不断刷新的线程
     Zombiethread *zomthread;
 
-public:
+  public:
     explicit GameWidget(QWidget *parent = nullptr, int stage_ = 1);
     ~GameWidget();
     void mousePressEvent(QMouseEvent *ev);
@@ -86,7 +86,7 @@ public:
     void createPlant(int x_, int y_, int id_);
     void paintEvent(QPaintEvent *ev);
 
-public slots:
+  public slots:
     // void pause();
     // void exit();
     void new_zombie(int id);

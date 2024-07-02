@@ -1,16 +1,16 @@
-#include "playwindow.h"
-#include "plant.h"
+#include "core/playwindow.h"
+#include "plant/plant.h"
 #include <QDebug>
+#include <QDir>
+#include <QFile>
 #include <QPalette>
 #include <QPixmap>
-#include <QDebug>
-#include <QFile>
-#include <QDir>
-#include <qrandom.h>
 #include <ctime>
+#include <qrandom.h>
 
-Playwindow::Playwindow() : mainthread(new Mainthread(this)), zomthread(new Zombiethread(this)), Suntimer(new QTimer()),
-                           refresh_timer(new QTimer()), zom_mutex(new QMutex()), sun_mutex(new QMutex())
+Playwindow::Playwindow()
+    : mainthread(new Mainthread(this)), zomthread(new Zombiethread(this)), Suntimer(new QTimer()),
+      refresh_timer(new QTimer()), zom_mutex(new QMutex()), sun_mutex(new QMutex())
 {
 
     srand(clock());
@@ -66,25 +66,15 @@ void Playwindow::new_sun()
     sun_mutex->unlock();
 }
 
-void Playwindow::add_sun()
-{
-    sunshine += 25;
-}
+void Playwindow::add_sun() { sunshine += 25; }
 
 void Playwindow::refresh()
 {
     setStyleSheet("#playwindow{border-image:url(../framework/images/background.png)}");
 }
 
-void Playwindow::exit()
-{
-}
+void Playwindow::exit() {}
 
-void Playwindow::pause()
-{
-}
+void Playwindow::pause() {}
 
-void Playwindow::delete_car(int I)
-{
-    cars[I] = nullptr;
-}
+void Playwindow::delete_car(int I) { cars[I] = nullptr; }

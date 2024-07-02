@@ -1,19 +1,19 @@
-#include "gamewidget.h"
+#include "interface/gamewidget.h"
+#include "include/constval.h"
+#include "include/size.h"
+#include "plant/coldpeashooter.h"
+#include "plant/nut.h"
+#include "plant/peashooter.h"
+#include "plant/plant.h"
+#include "plant/sunflower.h"
+#include "plant/twopeashooter.h"
+#include "util/card.h"
+#include "util/cardlist.h"
+#include "util/piconhand.h"
+#include "util/shovel.h"
 #include <QMouseEvent>
 #include <QPixmap>
 #include <QTimer>
-#include "card.h"
-#include "cardlist.h"
-#include "coldpeashooter.h"
-#include "constval.h"
-#include "nut.h"
-#include "peashooter.h"
-#include "piconhand.h"
-#include "plant.h"
-#include "shovel.h"
-#include "size.h"
-#include "sunflower.h"
-#include "twopeashooter.h"
 #include <backbutton.h>
 #include <mainstackedwidget.h>
 #include <playthread.h>
@@ -21,13 +21,14 @@
 #include <qpainter.h>
 
 GameWidget::GameWidget(QWidget *parent, int stage_)
-    : QWidget(parent), zom_mutex(new QMutex()), zomthread(new Zombiethread(this, stage_)), sun_mutex(new QMutex()) /*, refresh_timer(new QTimer())*/
+    : QWidget(parent), zom_mutex(new QMutex()), zomthread(new Zombiethread(this, stage_)),
+      sun_mutex(new QMutex()) /*, refresh_timer(new QTimer())*/
       ,
       Suntimer(new QTimer()), mainthread(new Mainthread(this))
 {
     // 把返回按钮与结束游戏的功能连接起来
-    connect(mainthread, &Mainthread::finished, [=]()
-            { ((MainStackedWidget *)(parentWidget()))->gameEnd(result); });
+    connect(mainthread, &Mainthread::finished,
+            [=]() { ((MainStackedWidget *)(parentWidget()))->gameEnd(result); });
     // 初始化
     stage = stage_;
     sunshine = 150;
@@ -74,7 +75,8 @@ void GameWidget::mousePressEvent(QMouseEvent *ev) // 鼠标点击事件
         // 左键
         int x = ev->position().x();
         int y = ev->position().y();
-        if (x <= PLANT_SX + COLUMN * PLANT_X && x >= PLANT_SX && y >= PLANT_SY && y <= PLANT_SY + PLANT_Y * ROW && (plantInHand || ShoveInHand))
+        if (x <= PLANT_SX + COLUMN * PLANT_X && x >= PLANT_SX && y >= PLANT_SY &&
+            y <= PLANT_SY + PLANT_Y * ROW && (plantInHand || ShoveInHand))
         {
             int px = (x - PLANT_SX) / PLANT_X;
             int py = (y - PLANT_SY) / PLANT_Y;                 // 获取位置

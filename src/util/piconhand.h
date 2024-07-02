@@ -9,8 +9,8 @@ class PicOnHand : public QLabel
     Q_OBJECT
     QPixmap pixmap;
 
-public:
-    PicOnHand(QWidget *parent,QString path);
+  public:
+    PicOnHand(QWidget *parent, QString path);
 };
 
 #endif // PICONHAND_H
